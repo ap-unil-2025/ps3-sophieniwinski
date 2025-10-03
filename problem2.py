@@ -48,10 +48,10 @@ def temperature_converter():
         else:
             print('Invalid unit please enter C or F')
     if unit == "C":
-        new_temp = round(celsius_to_fahrenheit(temp), 0)
+        new_temp = round(celsius_to_fahrenheit(temp), 2)
         print(f"The temperature you inserted was {temp} in celsius degrees which we converted to {new_temp} fahrenheit degrees.")
     else: 
-        new_temp = round(fahrenheit_to_celsius(temp),0)
+        new_temp = round(fahrenheit_to_celsius(temp),2)
         print(f"The temperature you inserted was {temp} fahrenheit degrees and we converted it to {new_temp} celsius degrees.")
 
 
