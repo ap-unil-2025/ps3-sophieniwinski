@@ -14,11 +14,21 @@ def get_numbers_from_user():
     numbers = []
 
     while True:
+        user_input = input("What number would you like to add to the list ")
+        if user_input.lower() == "done":
+            print("Thank you for your input! ")
+            break
+        else:
+            try: 
+                user_input = float(user_input)
+                numbers.append(user_input)
+                user_input = 0
+            except ValueError:
+                print("Please provide us with a number!")
         # TODO: Get input from user
         # TODO: Check if user typed 'done'
         # TODO: Try to convert to float and add to list
         # TODO: Handle invalid input gracefully
-        pass
 
     return numbers
 
@@ -42,8 +52,24 @@ def analyze_numbers(numbers):
     """
     if not numbers:
         return None
+    count = len(numbers)
+    sum_list = sum(numbers)
+    average = sum_list/count
+    minimum = min(numbers)
+    maximum = max(numbers)
 
-    analysis = {}
+    even_count = 0
+    odd_count = 0
+
+    for i in numbers:
+        if i%2 == 0:
+            even_count+=1
+        else: 
+            odd_count+=1
+
+    analysis = {"count" : count, 
+    "sum" : sum_list, "average": average, "minimum" : minimum,
+    "maximum" : maximum, "even numbers" : even_count, "odd numbers" : odd_count}
 
     # TODO: Calculate count
     # TODO: Calculate sum
@@ -68,6 +94,8 @@ def display_analysis(analysis):
 
     print("\nAnalysis Results:")
     print("-" * 20)
+    for key, value in analysis.items():
+        print(f"{key.capitalize()}: {value:.2f}")
 
     # TODO: Display all analysis results in a nice format
     # Example:
